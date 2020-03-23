@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "challenges",
+  "info": {
+    "name": "challenge"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "type": {
+      "type": "text",
+      "required": true
+    },
+    "submissions": {
+      "via": "challenge",
+      "collection": "submission"
+    }
+  }
+}

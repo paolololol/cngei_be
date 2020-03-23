@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "submissions",
+  "info": {
+    "name": "submission"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "challenge": {
+      "model": "challenge",
+      "via": "submissions"
+    },
+    "answer": {
+      "type": "text"
+    },
+    "attachment": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "submissions"
+    }
+  }
+}
