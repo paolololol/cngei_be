@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `challenge` model.
+ * Lifecycle callbacks for the `sfide` model.
  */
 
 module.exports = {

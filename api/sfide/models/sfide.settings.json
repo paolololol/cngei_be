@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "challenges",
+  "info": {
+    "name": "Sfide"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "scelta_multipla",
+        "risposta_libera",
+        "upload"
+      ],
+      "required": true
+    },
+    "attachment": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "multiple": {
+      "type": "boolean"
+    },
+    "correct": {
+      "type": "text",
+      "private": false
+    },
+    "answers": {
+      "type": "text"
+    },
+    "submissions": {
+      "collection": "submission"
+    },
+    "permissions": {
+      "plugin": "users-permissions",
+      "collection": "permission",
+      "via": "sfides",
+      "dominant": true
+    }
+  }
+}

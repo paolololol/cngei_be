@@ -10,23 +10,19 @@
     "timestamps": true
   },
   "attributes": {
-    "challenge": {
-      "model": "challenge",
-      "via": "submissions"
-    },
     "answer": {
       "type": "text"
     },
     "attachment": {
-      "model": "file",
+      "collection": "file",
       "via": "related",
       "plugin": "upload",
       "required": false
     },
     "user": {
+      "via": "submissions",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "submissions"
+      "model": "user"
     }
   }
 }

@@ -55,8 +55,17 @@
       "configurable": false
     },
     "submissions": {
-      "via": "user",
-      "collection": "submission"
+      "collection": "submission",
+      "via": "user"
+    },
+    "nomeptg": {
+      "type": "string"
+    },
+    "sezione": {
+      "type": "string"
+    },
+    "gruppo": {
+      "type": "string"
     }
   }
 }

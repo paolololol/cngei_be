@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/challenges",
-      "handler": "challenge.find",
+      "path": "/sfides",
+      "handler": "sfide.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/challenges/count",
-      "handler": "challenge.count",
+      "path": "/sfides/count",
+      "handler": "sfide.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/challenges/:id",
-      "handler": "challenge.findOne",
+      "path": "/sfides/:id",
+      "handler": "sfide.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/challenges",
-      "handler": "challenge.create",
+      "path": "/sfides",
+      "handler": "sfide.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/challenges/:id",
-      "handler": "challenge.update",
+      "path": "/sfides/:id",
+      "handler": "sfide.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/challenges/:id",
-      "handler": "challenge.delete",
+      "path": "/sfides/:id",
+      "handler": "sfide.delete",
       "config": {
         "policies": []
       }
