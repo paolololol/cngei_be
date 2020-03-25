@@ -5,4 +5,13 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+    async find(ctx) {
+        const entities = await strapi.services.sfide.find(ctx.query)
+        console.log(ctx.state.user)
+        return entities.map(x => ({
+            ...x,
+            submissions: x.submissions.filter(y => y.user === ctx.state.user.id)
+        }))
+    }
+};

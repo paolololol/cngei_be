@@ -6,7 +6,7 @@
       "settings": {
         "client": "postgres",
         "database": "gara",
-        "host": "127.0.0.1",
+        "host": "cngeiptg.think3.tech",
         "port": 5432,
         "username": "cngei",
         "password": "gara123"

@@ -27,7 +27,9 @@ module.exports = {
 
   // After fetching all values.
   // Fired after a `fetchAll` operation.
-  // afterFetchAll: async (model, response, options) => {},
+  afterFetchAll: async (model, response, options) => {
+    console.log(response)
+  },
 
   // Before creating a value.
   // Fired before an `insert` query.
