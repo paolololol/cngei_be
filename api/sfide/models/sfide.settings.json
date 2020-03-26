@@ -23,7 +23,8 @@
       "enum": [
         "scelta_multipla",
         "risposta_libera",
-        "upload"
+        "upload",
+        "risposta_aperta"
       ],
       "required": true
     },

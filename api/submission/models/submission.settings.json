@@ -13,16 +13,22 @@
     "answer": {
       "type": "text"
     },
-    "attachment": {
+    "attachments": {
       "collection": "file",
       "via": "related",
       "plugin": "upload",
       "required": false
     },
     "user": {
-      "via": "submissions",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "submissions"
+    },
+    "score": {
+      "type": "integer",
+      "min": 0,
+      "max": 50,
+      "private": false
     }
   }
 }

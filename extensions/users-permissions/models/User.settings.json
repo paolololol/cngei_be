@@ -55,8 +55,8 @@
       "configurable": false
     },
     "submissions": {
-      "collection": "submission",
-      "via": "user"
+      "via": "user",
+      "collection": "submission"
     },
     "nomeptg": {
       "type": "string"
