@@ -13,5 +13,12 @@ module.exports = {
             ...x,
             submissions: x.submissions.filter(y => y.user === ctx.state.user.id)
         }))
+    },
+    async findOne(ctx) {
+        const entity = await strapi.services.sfide.findOne(ctx.query)
+        return {
+            ...entity,
+            submissions: entity.submissions.filter(y => y.user === ctx.state.user.id)
+        }
     }
 };
