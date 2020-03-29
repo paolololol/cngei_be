@@ -5,33 +5,36 @@
  * to customize this controller
  */
 
- const {parseMultipartData, sanitizeEntity} = require('strapi-utils')
+const { parseMultipartData, sanitizeEntity } = require('strapi-utils')
 
 module.exports = {
-    async create(ctx) {
-      let entity;
-      if (ctx.is('multipart')) {
-          throw Error('not implemented')
-      } else {
-        if(!ctx.request.body.challenge || ctx.request.body.id)
-            throw Error('Bad request')
-        const challenge = await strapi.services.sfide.findOne({id: ctx.request.body.challenge})
-        console.log(challenge)
-        const getScore = () => {
-          try {
-          if(challenge.type === 'risposta_libera' && challenge.correct.trim().toLowerCase() === ctx.request.body.answer.trim().toLowerCase())
+  async create(ctx) {
+    let entity;
+    if (ctx.is('multipart')) {
+      throw Error('not implemented')
+    } else {
+      if (!ctx.request.body.challenge || ctx.request.body.id)
+        throw Error('Bad request')
+      const challenge = await strapi.services.sfide.findOne({ id: ctx.request.body.challenge })
+      const maybe = challenge.submissions.find(x => x.user === ctx.state.user.id)
+      if (maybe) return maybe
+      const getScore = () => {
+        try {
+          if (challenge.type === 'risposta_libera' && challenge.correct.trim().toLowerCase() === ctx.request.body.answer.trim().toLowerCase())
             return 10
-          if(challenge.type === 'scelta_multipla' && challenge.correct.trim().toLowerCase() === ctx.request.body.answer.trim().toLowerCase())
+          if (challenge.type === 'scelta_multipla' && challenge.correct.trim().toLowerCase() === ctx.request.body.answer.trim().toLowerCase())
             return challenge.answers.split('\n').length
           return null
-          } catch(e) {
-            return null 
-          }
+        } catch (e) {
+          return null
         }
-        console.log(getScore())
-        entity = await strapi.services.submission.create({...ctx.request.body, score: getScore(), user: ctx.state.user.id});
-        await (await strapi.query('Sfide').model.query(x => x.where('id', ctx.request.body.challenge)).fetch()).relations.submissions.attach([entity.id])
       }
-      return sanitizeEntity({...entity, challenge: ctx.request.body.id}, { model: strapi.models.submission });
+      entity = await strapi.services.submission.create({ ...ctx.request.body, score: getScore(), user: ctx.state.user.id });
+      await (await strapi.query('Sfide').model.query(x => x.where('id', ctx.request.body.challenge)).fetch()).relations.submissions.attach([entity.id])
     }
+    return sanitizeEntity({ ...entity, challenge: ctx.request.body.id }, { model: strapi.models.submission });
+  },
+  async leaderboard(ctx) {
+    return (await strapi.connections.default('leaderboard').select().orderBy('score', 'desc').limit(20).then())
+  }
 };

@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/submissions/leaderboard",
+      "handler": "submission.leaderboard",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/submissions/:id",
       "handler": "submission.findOne",
       "config": {

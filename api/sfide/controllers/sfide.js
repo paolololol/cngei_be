@@ -15,7 +15,7 @@ module.exports = {
         }))
     },
     async findOne(ctx) {
-        const entity = await strapi.services.sfide.findOne(ctx.query)
+        const entity = await strapi.services.sfide.findOne(ctx.params)
         return {
             ...entity,
             submissions: entity.submissions.filter(y => y.user === ctx.state.user.id)

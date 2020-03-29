@@ -22,6 +22,7 @@
     "strapi-plugin-upload": "3.0.0-beta.19.3",
     "strapi-plugin-users-permissions": "3.0.0-beta.19.3",
     "strapi-provider-upload-aws-s3": "^3.0.0-alpha.26.2",
+    "strapi-provider-upload-azure-storage": "^1.0.5",
     "strapi-utils": "3.0.0-beta.19.3"
   },
   "author": {
